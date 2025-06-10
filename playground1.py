@@ -2,7 +2,6 @@ import os
 from pyspark import SparkContext, RDD
 from pyspark.sql import SparkSession
 
-# Python 실행 경로 명시
 os.environ["PYSPARK_PYTHON"] = "C:/git_files/pyspark-playground/venv/Scripts/python.exe"
 os.environ["PYSPARK_DRIVER_PYTHON"] = "C:/git_files/pyspark-playground/venv/Scripts/python.exe"
 

@@ -1,10 +1,12 @@
 import os
+os.environ["PYSPARK_PYTHON"] = "C:/git_files/pyspark-playground/venv/Scripts/python.exe"
+os.environ["PYSPARK_DRIVER_PYTHON"] = "C:/git_files/pyspark-playground/venv/Scripts/python.exe"
+
 from pyspark import SparkContext, RDD
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as f
 
-os.environ["PYSPARK_PYTHON"] = "C:/git_files/pyspark-playground/venv/Scripts/python.exe"
-os.environ["PYSPARK_DRIVER_PYTHON"] = "C:/git_files/pyspark-playground/venv/Scripts/python.exe"
+
 
 if __name__ == "__main__":
 

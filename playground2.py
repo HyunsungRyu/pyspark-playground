@@ -80,4 +80,28 @@ if __name__ == "__main__":
         .reduceByKey(lambda a, b: a + b)\
         .sortByKey()
         
-    rdd_count_by_hour_N_minute.foreach(print)
+    # rdd_count_by_hour_N_minute.foreach(print)
+    
+    # d) group by
+    # d-1) ip list by status code and API method
+    def extract_cols(row: List[str]) -> tuple[str, str, str]:
+        ip = row[0]
+        status_code = row[3]
+        api_method = row[2].replace("\"", "").split(" ")[0]
+        
+        return ip, status_code, api_method
+    
+    # groupByKey ver | better readability
+    result = parsed_log_rdd.map(extract_cols)\
+        .map(lambda x: ((x[0], x[1]), x[2]))\
+        .groupByKey().mapValues(list)
+    
+    # result.foreach(print)
+    
+    # reduceByKey ver | better performance in most cases
+    result2 = parsed_log_rdd.map(extract_cols)\
+        .map(lambda x: ((x[0], x[1]), x[2]))\
+        .reduceByKey(lambda i1, i2: f"{i1},{i2}")\
+        .map(lambda row: (row[0], row[1].split(",")))
+        
+    result2.foreach(print)

@@ -105,3 +105,7 @@ if __name__ == "__main__":
         .map(lambda row: (row[0], row[1].split(",")))
         
     result2.foreach(print)
+    
+    while True:
+        pass
+    # localhost:4040

@@ -13,9 +13,9 @@ def load_data(from_file: bool, sc: SparkContext):
 
 def load_data_from_file(sc: SparkContext):
     return sc.textFile("C:\\git_files\\pyspark-playground\\data\\user_visits.txt")\
-        .map(lambda v: v.split(",")),\
+            .map(lambda v: v.split(",")),\
            sc.textFile("c:\\git_files\\pyspark-playground\\data\\user_names.txt")\
-        .map(lambda x: x.split(","))
+            .map(lambda x: x.split(","))
 
     
 def load_data_from_in_memory(sc: SparkContext):
